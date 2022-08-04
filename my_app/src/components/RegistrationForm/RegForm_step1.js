@@ -40,7 +40,7 @@ function RegistrationForm(props) {
                 Password:
                 <input type="text" name="password" value={password} onChange={onChangePassword}/>
             </label>
-            <input type="submit" value="Отправить"/>
+            <input type="submit" value="Далее"/>
         </form>
     );
 }
