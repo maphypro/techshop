@@ -1,12 +1,12 @@
 import React from 'react';
 import s from './StartPage.module.scss'
-import RegistrationForm from "../components/RegistrationForm";
+import RegForm from "../components/RegistrationForm/RegForm";
 
 
 function StartPage(props) {
     return (
         <div className={s.start_page}>
-            <RegistrationForm/>
+            <RegForm/>
         </div>
     );
 }
