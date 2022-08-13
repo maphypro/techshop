@@ -1,0 +1,24 @@
+.item_wrapper {
+  .item {
+
+    display: flex;
+    flex-direction: column;
+    max-width: 263px;
+    border: 1px solid #000;
+    
+    .img_wrapper {
+      max-width: 200px;
+      .img {
+        max-width: 200px;
+      }
+    }
+    .name {
+
+    }
+
+    .price {
+
+    }
+
+  }
+}

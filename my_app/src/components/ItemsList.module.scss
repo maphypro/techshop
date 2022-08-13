@@ -1,0 +1,10 @@
+.list_wrapper {
+  max-width: 1052px;
+  border: 2px solid #08d900;
+  display: flex;
+  flex-wrap: wrap;
+  .row {
+    display: flex;
+    justify-content: space-between;
+  }
+}

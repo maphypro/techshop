@@ -1,11 +1,11 @@
 import React from 'react';
 
-function LoginForm(props) {
+const Basket = () => {
     return (
         <div>
-
+            basket
         </div>
     );
-}
+};
 
-export default LoginForm;
+export default Basket;

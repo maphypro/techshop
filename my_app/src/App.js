@@ -1,11 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from './App.module.scss'
-import StartPage from "./pages/StartPage";
+import ApplicationRouter from "./components/ApplicationRouter";
+import {useDispatch} from "react-redux";
+import {checkAuth} from "./http/userApi";
+import {userIsAuth} from "./store/UserStore";
+import Header from "./components/Header";
 
-function App(props) {
+function App() {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        checkAuth().then(() => {
+            dispatch(userIsAuth)
+        })
+    }, [])
+
     return (
         <div className={s.app}>
-            <StartPage/>
+            <Header/>
+            <ApplicationRouter/>
         </div>
     );
 }
