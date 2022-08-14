@@ -7,7 +7,7 @@ function ItemsList(props) {
 
     //const [items, setItems] = useState([]);
 
-    const itemsOnScreen = 24
+    const itemsOnScreen = 16
     //загружаем с сервера itemsOnScreen*2 товаров при первой загрузке
 
     const rowsCount = itemsOnScreen / 4;

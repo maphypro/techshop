@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 
-import s from "./Registration.module.scss";
+import s from "./Login.module.scss";
 import {Link, useNavigate} from "react-router-dom";
-import {LOGIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
+import {LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import {login} from "../http/userApi";
 import {useDispatch} from "react-redux";
 import {userIsAuth} from "../store/UserStore";
@@ -16,6 +16,8 @@ function Login(props) {
         password: '',
     })
 
+    const [error, setError] = useState(false)
+
     //контролируемый ввод в поля формы
     const handleInputChange = (e) => {
         setInputs({
@@ -28,17 +30,18 @@ function Login(props) {
     const dispatch = useDispatch();
 
 
-    const handleSubmitFrom = (e) => {
+    const handleSubmitFrom = async (e) => {
         e.preventDefault();
         //отправить запрос
-        const token = login(inputs.email, inputs.password)
-        //редиректнуть на страницу авторизации
-        if (token) {
+
+        try {
+            let token = await login(inputs.email, inputs.password)
             dispatch(userIsAuth)
             navigate(SHOP_ROUTE)
-        }
-        else {
-            navigate(LOGIN_ROUTE)
+            setError(false);
+        } catch (e) {
+            setError(true)
+            alert(e.message)
         }
     }
 
@@ -61,12 +64,13 @@ function Login(props) {
                            value={inputs.password}
                            onChange={handleInputChange}/>
                 </label>
+                { error ? <div className={s.err}>Неправильный email или пароль!</div> : null }
                 <div className={s.box}>
                     <input type="submit"
                            value={'Войти'}
                     />
                     <div>
-                        Ещё не зарегистрированы? <Link to={LOGIN_ROUTE}>Зарегестрироваться</Link>
+                        Ещё не зарегистрированы? <Link to={REGISTRATION_ROUTE}>Зарегестрироваться</Link>
                     </div>
                 </div>
             </form>

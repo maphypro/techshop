@@ -1,9 +1,12 @@
 .item_wrapper {
+  margin: 0 20px 0 0;
+
   .item {
 
     display: flex;
     flex-direction: column;
     max-width: 263px;
+    width: 201px;
     border: 1px solid #000;
     
     .img_wrapper {

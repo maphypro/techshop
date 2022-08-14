@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import s from './Registration.module.scss'
 import {Link, useNavigate} from "react-router-dom";
-import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/consts";
-import {registration} from "../http/userApi";
+import {LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE} from "../utils/consts";
+import {login, registration} from "../http/userApi";
+import {userIsAuth} from "../store/UserStore";
 
 
 function Registration() {
@@ -14,6 +15,9 @@ function Registration() {
         confirmedPassword: ''
     })
 
+    const [error, setError] = useState(false)
+
+
     //контролируемый ввод в поля формы
     const handleInputChange = (e) => {
         setInputs({
@@ -24,16 +28,16 @@ function Registration() {
 
     const navigate = useNavigate();
 
-    const handleSubmitFrom = (e) => {
+    const handleSubmitFrom = async (e) => {
         e.preventDefault();
-        //отправить запрос
-        const token = registration(inputs.email, inputs.password)
-        //редиректнуть на страницу авторизации
-        if (token) {
+
+        try {
+            let token = await registration(inputs.email, inputs.password)
             navigate(LOGIN_ROUTE)
-        }
-        else {
-            navigate(REGISTRATION_ROUTE)
+            setError(false);
+        } catch (e) {
+            setError(true)
+            alert(e.message)
         }
     }
 
@@ -63,6 +67,7 @@ function Registration() {
                            value={inputs.confirmedPassword}
                            onChange={handleInputChange}/>
                 </label>
+                { error ? <div className={s.err}>Пользователь с таким email уже существует</div> : null }
                 <div className={s.box}>
                     <input type="submit"
                            value={'Подтвердить'}

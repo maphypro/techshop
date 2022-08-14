@@ -8,8 +8,10 @@ const Shop = () => {
 
     return (
         <div className={s.shop}>
-            <Filters/>
-            <ItemsList/>
+            <div className={s.container}>
+                <Filters/>
+                <ItemsList/>
+            </div>
         </div>
     );
 };

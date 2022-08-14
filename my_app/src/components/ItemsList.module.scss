@@ -1,10 +1,15 @@
 .list_wrapper {
-  max-width: 1052px;
+  max-width: 868px;
   border: 2px solid #08d900;
   display: flex;
   flex-wrap: wrap;
+
   .row {
     display: flex;
     justify-content: space-between;
+    margin: 0 0 16px 0;
+  }
+  .row:last-child {
+    margin: 0;
   }
 }
