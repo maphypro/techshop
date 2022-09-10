@@ -1,0 +1,15 @@
+.popup {
+  width: 100%;
+}
+
+.trigger {
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  border: 10px solid #e82323;
+  position: sticky;
+  width: 100%;
+}
