@@ -4,7 +4,7 @@ import logo from '../assets/logo.png'
 import avatar from '../assets/avatar.png'
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-import {BASKET_ROUTE, LOGIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
+import {ADMIN_ROUTE, BASKET_ROUTE, LOGIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import {logout} from "../http/userApi";
 import {userIsNotAuth} from "../store/UserStore";
 
@@ -28,6 +28,9 @@ const Header = () => {
             <nav className={s.navbar_wrapper}>
                 { isAuth ?
                     <div className={s.navbar_auth}>
+                        <button className={s.admin_btn_wrapper}>
+                            <Link to={ADMIN_ROUTE}>Админка</Link>
+                        </button>
                         <button className={s.logout_wrapper}
                                 onClick={logOut}>
                             Log out

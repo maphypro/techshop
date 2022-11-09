@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import Popup from "reactjs-popup";
 import { useDispatch, useSelector } from "react-redux";
-import { loadTypes } from "../store/actions/typeAction";
+import { loadTypes } from "../../store/actions/typeAction";
 import s from "./TypePopup.module.scss";
-import { setActiveType } from "../store/TypeStore";
+import { setActiveType } from "../../store/TypeStore";
 import { v4 } from "uuid";
+import TypePopupList from "./TypePopupList";
 
 const TypePopup = () => {
   const types = useSelector((state) => state.typeReducer.types);
@@ -30,15 +31,7 @@ const TypePopup = () => {
           </button>
         }
       >
-        <div className={s.list}>
-          {types.map((elem) => {
-            return (
-              <button typeid={elem.id} onClick={handlePickType} key={v4()}>
-                {elem.name}
-              </button>
-            );
-          })}
-        </div>
+        <TypePopupList types={types} handlePickType={handlePickType} />
       </Popup>
     </div>
   );

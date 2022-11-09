@@ -1,3 +1,29 @@
 .wrapper {
+  height: 100%;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+
+  .content {
+    border: 1px solid #0010ce;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    .input {
+      margin: 0 0 10px 0;
+      width: 400px;
+      height: 100px;
+      border-radius: 15px;
+      font-size: 32px;
+      color: whitesmoke;
+      background: #424242;
+    }
+
+    .input:last-child {
+      margin: 0;
+    }
+  }
 }

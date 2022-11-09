@@ -1,9 +1,20 @@
-import {createStore, combineReducers} from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import { userReducer } from "./UserStore";
+import { deviceReducer } from "./DeviceStore";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { typeReducer } from "./TypeStore";
+import { brandReducer } from "./BrandStore";
 
-import {userReducer} from "./UserStore";
+const rootReducer = combineReducers({
+  userReducer,
+  deviceReducer,
+  typeReducer,
+  brandReducer,
+});
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
-const rootReducer = combineReducers({userReducer})
-const store = createStore(rootReducer);
-
-export default store
-
+export default store;

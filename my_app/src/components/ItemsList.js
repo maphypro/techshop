@@ -1,34 +1,37 @@
-import React, {useState} from 'react';
-import s from './ItemsList.module.scss'
+import React, { useEffect } from "react";
+import s from "./ItemsList.module.scss";
+import { v4 } from "uuid";
 import Item from "./Item";
+import { useDispatch, useSelector } from "react-redux";
+import { loadDevices } from "../store/actions/deviceAction";
+import { useFilters } from "../hooks/useFilters";
 
+const ItemsList = () => {
+  const devices = useSelector((state) => state.deviceReducer.devices);
+  const dispatch = useDispatch();
 
-function ItemsList(props) {
+  const items = [];
 
-    //const [items, setItems] = useState([]);
+  const { typeId, brandId, limit, page } = useFilters();
 
-    const itemsOnScreen = 16
-    //загружаем с сервера itemsOnScreen*2 товаров при первой загрузке
+  useEffect(() => {
+    dispatch(loadDevices({ typeId, brandId, limit, page }));
+  }, [typeId, brandId]);
 
-    const rowsCount = itemsOnScreen / 4;
-
-    let items = []
-    for (let i = 0; i < rowsCount; i++) {
-        items.push(
-            <div className={s.row}>
-                <Item/><Item/><Item/><Item/>
-            </div>
-        )
-    }
-
-    return (
-        <div className={s.list_wrapper}>
-            {
-                items.map((elem) => elem)
-            }
-        </div>
+  devices.forEach((item, index) => {
+    items.push(
+      <Item
+        key={v4()}
+        name={item.name}
+        price={item.price}
+        img={item.img}
+        rating={item.rating}
+        id={item.id}
+      />
     );
-}
+  });
 
+  return <div className={s.list_wrapper}>{items.map((elem) => elem)}</div>;
+};
 
 export default ItemsList;
