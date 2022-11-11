@@ -12,14 +12,14 @@ function App() {
 
   let obj = useSelector((state) => {
     return {
-      typeId:
-        "id" in state.typeReducer.activeType
-          ? state.typeReducer.activeType.id
-          : null,
-      brandId:
-        "id" in state.brandReducer.activeBrand
-          ? state.brandReducer.activeBrand.id
-          : null,
+      typesId:
+        state.typeReducer.activeTypes.length !== 0
+          ? state.typeReducer.activeTypes.id
+          : [],
+      brandsId:
+        state.brandReducer.activeBrands.length !== 0
+          ? state.brandReducer.activeBrands.id
+          : [],
       limit: state.deviceReducer.limit,
       page: state.deviceReducer.page,
     };

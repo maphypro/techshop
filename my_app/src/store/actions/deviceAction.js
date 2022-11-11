@@ -1,9 +1,9 @@
 import { getAllDevices, getOneDevice } from "../../http/deviceApi";
 import { loadDevicesAction } from "../DeviceStore";
 
-export const loadDevices = ({ brandId, typeId, limit, page }) => {
+export const loadDevices = ({ brandsId, typesId, limit, page }) => {
   return (dispatch) => {
-    getAllDevices(brandId, typeId, limit, page)
+    getAllDevices(brandsId, typesId, limit, page)
       .then((res) => {
         return res.data.rows;
       })

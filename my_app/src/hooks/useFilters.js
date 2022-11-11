@@ -1,22 +1,22 @@
 import { useSelector } from "react-redux";
 
 export const useFilters = () => {
-  const typeId = useSelector((state) =>
-    "id" in state.typeReducer.activeType
-      ? state.typeReducer.activeType.id
-      : null
+  const typesId = useSelector((state) =>
+    state.typeReducer.activeTypes.length !== 0
+      ? state.typeReducer.activeTypes.map((elem) => elem.id)
+      : []
   );
-  const brandId = useSelector((state) =>
-    "id" in state.brandReducer.activeBrand
-      ? state.brandReducer.activeBrand.id
-      : null
+  const brandsId = useSelector((state) =>
+    state.brandReducer.activeBrands.length !== 0
+      ? state.brandReducer.activeBrands.map((elem) => elem.id)
+      : []
   );
   const limit = useSelector((state) => state.deviceReducer.limit);
   const page = useSelector((state) => state.deviceReducer.page);
 
   return {
-    typeId,
-    brandId,
+    typesId,
+    brandsId,
     limit,
     page,
   };

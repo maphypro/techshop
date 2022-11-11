@@ -8,8 +8,6 @@ const Item = ({ name, price, rating, img, id }) => {
     //console.log(img);
   }, [img]);
 
-  const handleViewFullName = (e) => {};
-
   return (
     <div className={s.item_wrapper}>
       <div className={s.item}>

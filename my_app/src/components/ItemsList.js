@@ -12,11 +12,11 @@ const ItemsList = () => {
 
   const items = [];
 
-  const { typeId, brandId, limit, page } = useFilters();
+  const { typesId, brandsId, limit, page } = useFilters();
 
   useEffect(() => {
-    dispatch(loadDevices({ typeId, brandId, limit, page }));
-  }, [typeId, brandId]);
+    dispatch(loadDevices({ typesId, brandsId, limit, page }));
+  }, [typesId.length, brandsId.length]);
 
   devices.forEach((item, index) => {
     items.push(

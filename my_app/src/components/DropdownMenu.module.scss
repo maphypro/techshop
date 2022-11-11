@@ -1,11 +1,12 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  margin: 10px 0;
+  width: 100%;
 
   .head_wrapper {
     width: 100%;
     height: 50px;
-    background: antiquewhite;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -17,24 +18,44 @@
       width: 100px;
 
       .arrow {
-        width: 26px;
-        height: 26px;
+        width: 20px;
+        height: 20px;
         filter: invert(20%) sepia(0%) saturate(66%) hue-rotate(203deg) brightness(94%) contrast(77%);
+        margin: 0 20px 0 10px;
       }
+
+      .arrow_active {
+        width: 20px;
+        height: 20px;
+        filter: invert(20%) sepia(0%) saturate(66%) hue-rotate(203deg) brightness(94%) contrast(77%);
+        transform: rotate(-90deg);
+        margin: 0 20px 0 10px;
+
+      }
+
       .name {
-        font-size: 26px;
+        font-size: 16px;
         color: #424242;
+        white-space: nowrap;
       }
 
     }
+  }
+
+  .head_wrapper:hover {
+    background: antiquewhite;
   }
 
   .content_wrapper {
     display: none;
   }
 
-  .active {
+  .content_active {
     display: block;
   }
+
+
+
+
 
 }

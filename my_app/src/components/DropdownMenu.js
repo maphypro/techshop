@@ -9,12 +9,18 @@ const DropdownMenu = ({ name, children }) => {
     <div className={s.wrapper}>
       <div className={s.head_wrapper} onClick={(e) => setActive(!active)}>
         <div className={s.head}>
-          <img src={arrow} className={s.arrow} alt={"arr"} />
+          <img
+            src={arrow}
+            className={active ? s.arrow_active : s.arrow}
+            alt={"arr"}
+          />
           <div className={s.name}>{name}</div>
         </div>
       </div>
       <div
-        className={active ? s.content_wrapper + s.active : s.content_wrapper}
+        className={
+          active ? s.content_wrapper + s.content_active : s.content_wrapper
+        }
       >
         {children}
       </div>
