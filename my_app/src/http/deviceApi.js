@@ -10,13 +10,20 @@ export const getOneDevice = async (id) => {
   return device;
 };
 
-export const getAllDevices = async (brandsId, typesId, limit, page) => {
-  //console.log(brandId, typeId, limit, page);
-  //console.log(brandsId, typesId);
+export const getAllDevices = async (
+  brandsId,
+  typesId,
+  sortingField,
+  sortingOrder,
+  limit,
+  page
+) => {
   const device = $host.get(`api/device/`, {
     params: {
       brandsId: brandsId,
       typesId: typesId,
+      sortingField: sortingField,
+      sortingOrder: sortingOrder,
       limit: limit,
       page: page,
     },

@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0 2vw;
+  width: 45.8vw;
+  height: 8vh;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px 1px rgba(59, 59, 68, 0.2);
+
+  .title {
+    font-size: 15px;
+    margin: 0 10px 0 0;
+  }
+
+}

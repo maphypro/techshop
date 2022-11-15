@@ -2,6 +2,7 @@ const { Device, DeviceInfo } = require("../models/models");
 const uuid = require("uuid");
 const path = require("path");
 const ApiError = require("../error/ApiError");
+const { literal } = require("sequelize");
 
 class DeviceController {
   async create(req, res, next) {
@@ -37,18 +38,30 @@ class DeviceController {
   }
 
   async getAll(req, res) {
-    let { brandsId, typesId, limit, page } = req.query;
-    console.log(brandsId, typesId, limit, page);
+    let { brandsId, typesId, sortingField, sortingOrder, limit, page } =
+      req.query;
+    console.log(brandsId, typesId, sortingField, sortingOrder, limit, page);
     page = page || 1;
     limit = limit || 200;
     let offset = page * limit - limit;
     let devices;
     if (!brandsId && !typesId) {
-      devices = await Device.findAndCountAll({ limit, offset });
+      devices = await Device.findAndCountAll({
+        limit,
+        offset,
+        order:
+          sortingField && sortingOrder
+            ? literal(`${sortingField} ${sortingOrder}`)
+            : null,
+      });
     }
     if (!brandsId && typesId) {
       devices = await Device.findAndCountAll({
         where: { typeId: typesId },
+        order:
+          sortingField && sortingOrder
+            ? literal(`${sortingField} ${sortingOrder}`)
+            : null,
         limit,
         offset,
       });
@@ -56,6 +69,10 @@ class DeviceController {
     if (brandsId && !typesId) {
       devices = await Device.findAndCountAll({
         where: { brandId: brandsId },
+        order:
+          sortingField && sortingOrder
+            ? literal(`${sortingField} ${sortingOrder}`)
+            : null,
         limit,
         offset,
       });
@@ -63,6 +80,10 @@ class DeviceController {
     if (brandsId && typesId) {
       devices = await Device.findAndCountAll({
         where: { brandId: brandsId, typeId: typesId },
+        order:
+          sortingField && sortingOrder
+            ? literal(`${sortingField} ${sortingOrder}`)
+            : null,
         limit,
         offset,
       });

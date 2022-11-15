@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import s from "./Filters.module.scss";
+import s from "./LeftFilters.module.scss";
 import { setActiveType } from "../store/TypeStore";
 import { setActiveBrand } from "../store/BrandStore";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,12 +13,11 @@ export const itemType = {
   BRAND: "BRAND",
 };
 
-function Filters() {
+function LeftFilters() {
   const brands = useSelector((state) => state.brandReducer.brands);
   const types = useSelector((state) => state.typeReducer.types);
 
   const dispatch = useDispatch();
-  //dispatch(setActiveType(types.find((elem) => elem.name === "Смартфон")));
 
   useEffect(() => {
     dispatch(loadBrands());
@@ -36,7 +35,7 @@ function Filters() {
               index={elem.id}
               items={types}
               itemType={itemType.TYPE}
-              defaultActive={elem.name === "Смартфон"}
+              defaultActive={false}
             />
           ))}
         </div>
@@ -50,7 +49,7 @@ function Filters() {
               index={elem.id}
               items={brands}
               itemType={itemType.BRAND}
-              defaultActive={true}
+              defaultActive={false}
             />
           ))}
         </div>
@@ -59,4 +58,4 @@ function Filters() {
   );
 }
 
-export default Filters;
+export default LeftFilters;

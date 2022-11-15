@@ -10,13 +10,25 @@ const ItemsList = () => {
   const devices = useSelector((state) => state.deviceReducer.devices);
   const dispatch = useDispatch();
 
+  //console.log("I'm ItemList");
+
   const items = [];
 
-  const { typesId, brandsId, limit, page } = useFilters();
+  const { typesId, brandsId, sortingField, sortingOrder, limit, page } =
+    useFilters();
 
   useEffect(() => {
-    dispatch(loadDevices({ typesId, brandsId, limit, page }));
-  }, [typesId.length, brandsId.length]);
+    dispatch(
+      loadDevices({
+        typesId,
+        brandsId,
+        sortingField,
+        sortingOrder,
+        limit,
+        page,
+      })
+    );
+  }, [typesId.length, brandsId.length, sortingField, sortingOrder]);
 
   devices.forEach((item, index) => {
     items.push(

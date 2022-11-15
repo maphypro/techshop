@@ -4,6 +4,8 @@ import s from "./Item.module.scss";
 const Item = ({ name, price, rating, img, id }) => {
   const [tooltipVisible, setTooltipVisible] = useState(false);
 
+  //console.log("I'm Item");
+
   useEffect(() => {
     //console.log(img);
   }, [img]);

@@ -11,12 +11,17 @@ export const useFilters = () => {
       ? state.brandReducer.activeBrands.map((elem) => elem.id)
       : []
   );
+  const sortingField = useSelector((state) => state.deviceReducer.sortingField);
+  const sortingOrder = useSelector((state) => state.deviceReducer.sortingOrder);
+
   const limit = useSelector((state) => state.deviceReducer.limit);
   const page = useSelector((state) => state.deviceReducer.page);
 
   return {
     typesId,
     brandsId,
+    sortingField,
+    sortingOrder,
     limit,
     page,
   };

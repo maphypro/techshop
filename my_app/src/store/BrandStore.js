@@ -19,7 +19,7 @@ export const brandReducer = (state = initialState, action) => {
       };
     }
     case DISCARD_BRAND: {
-      console.log(action.payload);
+      //console.log(action.payload);
       return {
         ...state,
         activeBrands: state.activeBrands.filter(

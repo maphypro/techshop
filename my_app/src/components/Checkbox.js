@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import s from "./Checkbox.module.scss";
 import { discardType, setActiveType } from "../store/TypeStore";
-import { itemType as TYPES_OF_ITEMS } from "./Filters";
+import { itemType as TYPES_OF_ITEMS } from "./LeftFilters";
 import { discardBrand, setActiveBrand } from "../store/BrandStore";
 import { useDispatch } from "react-redux";
 
@@ -18,20 +18,20 @@ function Checkbox({ name, index, items, itemType, defaultActive }) {
     switch (itemType) {
       case TYPES_OF_ITEMS.TYPE: {
         if (!isActive) {
-          console.log("dispatch add type");
+          //console.log("dispatch add type");
           dispatch(setActiveType(pickedItem));
         } else {
-          console.log("dispatch remove type");
+          //console.log("dispatch remove type");
           dispatch(discardType(pickedItem));
         }
         break;
       }
       case TYPES_OF_ITEMS.BRAND: {
         if (!isActive) {
-          console.log("dispatch add brand");
+          //console.log("dispatch add brand");
           dispatch(setActiveBrand(pickedItem));
         } else {
-          console.log("dispatch remove brand");
+          //console.log("dispatch remove brand");
           dispatch(discardBrand(pickedItem));
         }
         break;
