@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import s from "./DropdownMenu.module.scss";
 import arrow from "../assets/arrow.svg";
 
-const DropdownMenu = ({ name, children }) => {
-  const [active, setActive] = useState(false);
+const DropdownMenu = ({ name, isActive, children }) => {
+  const [active, setActive] = useState(isActive);
 
   return (
     <div className={s.wrapper}>

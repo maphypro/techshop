@@ -35,8 +35,6 @@ const TopFilters = () => {
       {activeButtons.map((elem, index) => (
         <SortBtn
           name={elem.name}
-          field={elem.field}
-          order={elem.order}
           index={index}
           isActive={elem.isActive}
           handleClick={handleClick}

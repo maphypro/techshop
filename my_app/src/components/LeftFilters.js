@@ -26,7 +26,7 @@ function LeftFilters() {
 
   return (
     <div className={s.filters_wrapper}>
-      <DropdownMenu name={"Тип устройств"}>
+      <DropdownMenu name={"Тип устройств"} isActive={true}>
         <div>
           {types.map((elem) => (
             <Checkbox
@@ -40,7 +40,7 @@ function LeftFilters() {
           ))}
         </div>
       </DropdownMenu>
-      <DropdownMenu name={"Производитель"}>
+      <DropdownMenu name={"Производитель"} isActive={true}>
         <div>
           {brands.map((elem) => (
             <Checkbox

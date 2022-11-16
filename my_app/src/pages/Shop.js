@@ -4,6 +4,7 @@ import s from "./Shop.module.scss";
 import ItemsList from "../components/ItemsList";
 import LeftFilters from "../components/LeftFilters";
 import TopFilters from "../components/TopFilters";
+import Pagination from "../components/Pagination";
 
 const Shop = () => {
   return (
@@ -13,6 +14,7 @@ const Shop = () => {
         <div className={s.topFiltersAndItemsListWrapper}>
           <TopFilters />
           <ItemsList />
+          <Pagination />
         </div>
       </div>
     </div>

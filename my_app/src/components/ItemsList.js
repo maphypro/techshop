@@ -10,8 +10,6 @@ const ItemsList = () => {
   const devices = useSelector((state) => state.deviceReducer.devices);
   const dispatch = useDispatch();
 
-  //console.log("I'm ItemList");
-
   const items = [];
 
   const { typesId, brandsId, sortingField, sortingOrder, limit, page } =
@@ -28,7 +26,7 @@ const ItemsList = () => {
         page,
       })
     );
-  }, [typesId.length, brandsId.length, sortingField, sortingOrder]);
+  }, [typesId.length, brandsId.length, sortingField, sortingOrder, limit]);
 
   devices.forEach((item, index) => {
     items.push(
